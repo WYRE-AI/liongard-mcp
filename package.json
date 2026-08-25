@@ -1,5 +1,5 @@
 {
-  "name": "@wyre-technology/liongard-mcp",
+  "name": "@wyre-ai/liongard-mcp",
   "version": "2.0.4",
   "description": "Liongard MCP server for Claude",
   "type": "module",
@@ -24,7 +24,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wyre-technology/liongard-mcp.git"
+    "url": "git+https://github.com/WYRE-AI/liongard-mcp.git"
   },
   "keywords": [
     "mcp",
@@ -37,9 +37,9 @@
   "author": "Wyre Technology",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/wyre-technology/liongard-mcp/issues"
+    "url": "https://github.com/WYRE-AI/liongard-mcp/issues"
   },
-  "homepage": "https://github.com/wyre-technology/liongard-mcp#readme",
+  "homepage": "https://github.com/WYRE-AI/liongard-mcp#readme",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.29.0",
     "@wyre-technology/node-liongard": "^3.0.2"

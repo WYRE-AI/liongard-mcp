@@ -12,12 +12,13 @@ WORKDIR /app
 # Copy package files
 COPY package*.json ./
 
-# GitHub Packages auth for @wyre-technology scoped packages. Operators supply a
+# GitHub Packages auth for @wyre-ai / @wyre-technology scoped packages. Operators supply a
 # GitHub PAT (read:packages) as the GITHUB_TOKEN build arg; the temp .npmrc is
 # removed after install so the token never lands in an image layer.
 # (--ignore-scripts prevents 'prepare' from running before source is copied)
 ARG GITHUB_TOKEN
-RUN echo "@wyre-technology:registry=https://npm.pkg.github.com" > .npmrc && \
+RUN echo "@wyre-ai:registry=https://npm.pkg.github.com" > .npmrc && \
+    echo "@wyre-technology:registry=https://npm.pkg.github.com" >> .npmrc && \
     echo "//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}" >> .npmrc && \
     npm ci --ignore-scripts && \
     rm -f .npmrc
@@ -81,7 +82,7 @@ ARG COMMIT_SHA="unknown"
 ARG BUILD_DATE="unknown"
 
 # Labels for metadata
-LABEL io.modelcontextprotocol.server.name="io.github.wyre-technology/liongard-mcp"
+LABEL io.modelcontextprotocol.server.name="io.github.WYRE-AI/liongard-mcp"
 LABEL maintainer="engineering@wyre.ai"
 LABEL version="${VERSION}"
 LABEL description="Liongard MCP Server - Model Context Protocol server for Liongard"
@@ -90,8 +91,8 @@ LABEL org.opencontainers.image.description="Model Context Protocol server for Li
 LABEL org.opencontainers.image.version="${VERSION}"
 LABEL org.opencontainers.image.created="${BUILD_DATE}"
 LABEL org.opencontainers.image.revision="${COMMIT_SHA}"
-LABEL org.opencontainers.image.source="https://github.com/wyre-technology/liongard-mcp"
-LABEL org.opencontainers.image.documentation="https://github.com/wyre-technology/liongard-mcp/blob/main/README.md"
-LABEL org.opencontainers.image.url="https://github.com/wyre-technology/liongard-mcp/pkgs/container/liongard-mcp"
+LABEL org.opencontainers.image.source="https://github.com/WYRE-AI/liongard-mcp"
+LABEL org.opencontainers.image.documentation="https://github.com/WYRE-AI/liongard-mcp/blob/main/README.md"
+LABEL org.opencontainers.image.url="https://github.com/WYRE-AI/liongard-mcp/pkgs/container/liongard-mcp"
 LABEL org.opencontainers.image.vendor="Wyre Technology"
 LABEL org.opencontainers.image.licenses="Apache-2.0"

@@ -1,18 +1,18 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.wyre-technology/liongard-mcp",
+  "name": "io.github.WYRE-AI/liongard-mcp",
   "title": "Liongard",
   "description": "MCP server for Liongard — inspectors, environments, metrics, detections, and timeline data.",
   "repository": {
-    "url": "https://github.com/wyre-technology/liongard-mcp",
+    "url": "https://github.com/WYRE-AI/liongard-mcp",
     "source": "github"
   },
   "version": "0.0.0",
-  "websiteUrl": "https://github.com/wyre-technology/liongard-mcp",
+  "websiteUrl": "https://github.com/WYRE-AI/liongard-mcp",
   "packages": [
     {
       "registryType": "oci",
-      "identifier": "ghcr.io/wyre-technology/liongard-mcp:0.0.0",
+      "identifier": "ghcr.io/wyre-ai/liongard-mcp:0.0.0",
       "transport": {
         "type": "stdio"
       },

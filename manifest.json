@@ -5,9 +5,9 @@
   "version": "0.0.0",
   "description": "MCP server for Liongard - access inspectors, environments, metrics, and detections through AI assistants",
   "long_description": "Provides AI assistants with structured access to your Liongard data. Browse inspectors, environments, metrics, detections, and timeline data through the Model Context Protocol.",
-  "author": { "name": "Wyre Technology", "url": "https://github.com/wyre-technology" },
-  "repository": { "type": "git", "url": "https://github.com/wyre-technology/liongard-mcp" },
-  "homepage": "https://github.com/wyre-technology/liongard-mcp",
+  "author": { "name": "Wyre Technology", "url": "https://github.com/WYRE-AI" },
+  "repository": { "type": "git", "url": "https://github.com/WYRE-AI/liongard-mcp" },
+  "homepage": "https://github.com/WYRE-AI/liongard-mcp",
   "license": "Apache-2.0",
   "keywords": ["liongard", "visibility", "msp", "inspectors", "it-management"],
   "server": {

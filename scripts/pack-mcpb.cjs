@@ -84,9 +84,9 @@ try {
 
   // 8. Pack the bundle
   console.log('\n=== Packing MCPB bundle ===');
-  // pkg.name is scoped ("@wyre-technology/liongard-mcp"), so building the
+  // pkg.name is scoped ("@wyre-ai/liongard-mcp"), so building the
   // bundle filename directly from it put the output at
-  // ROOT/@wyre-technology/liongard-mcp.mcpb -- a subdirectory that doesn't
+  // ROOT/@wyre-ai/liongard-mcp.mcpb -- a subdirectory that doesn't
   // exist at the repo root, where the release workflow's `bundles=(*.mcpb)`
   // glob looks for it. Strip the scope so the bundle lands as a flat file.
   const bundleName = pkg.name.includes('/') ? pkg.name.split('/').pop() : pkg.name;

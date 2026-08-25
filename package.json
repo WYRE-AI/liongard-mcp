@@ -41,7 +41,7 @@
   },
   "homepage": "https://github.com/WYRE-AI/liongard-mcp#readme",
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.29.0",
+    "@modelcontextprotocol/sdk": "^1.30.0",
     "@wyre-technology/node-liongard": "^3.0.2"
   },
   "devDependencies": {

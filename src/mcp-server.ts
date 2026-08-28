@@ -278,7 +278,7 @@ export function createMcpServer(
         content: [
           {
             type: "text",
-            text: `Unknown tool: ${name}. Use liongard_navigate to discover available tools by domain.`,
+            text: `Unknown tool: ${name}. Call conduit__my_access to see which tools are available to you.`,
           },
         ],
         isError: true,

@@ -207,10 +207,19 @@ describe("MCP Apps detection card", () => {
       );
       expect(res.status).toBe(200);
       const body = (await res.json()) as {
-        result?: { isError?: boolean; content?: { text?: string }[] };
+        result?: {
+          isError?: boolean;
+          content?: { text?: string }[];
+          structuredContent?: Record<string, unknown>;
+        };
       };
       expect(body.result?.isError).toBeFalsy();
-      const payload = JSON.parse(body.result?.content?.[0]?.text ?? "{}");
+      // SEP-1865: content is now a short text summary; the full detection
+      // (including _card) lives in structuredContent.
+      expect(body.result?.content?.[0]?.text).toBe(
+        'Retrieved detection "Configuration Change".'
+      );
+      const payload = body.result?.structuredContent ?? {};
       // Model-visible payload unchanged apart from _card.
       expect(payload.ID).toBe(openDetection.ID);
       expect(payload.SystemID).toBe(openDetection.SystemID);
@@ -239,10 +248,14 @@ describe("MCP Apps detection card", () => {
         ENV_CREDS
       );
       const body = (await res.json()) as {
-        result?: { isError?: boolean; content?: { text?: string }[] };
+        result?: {
+          isError?: boolean;
+          content?: { text?: string }[];
+          structuredContent?: Record<string, unknown>;
+        };
       };
       expect(body.result?.isError).toBeFalsy();
-      const payload = JSON.parse(body.result?.content?.[0]?.text ?? "{}");
+      const payload = body.result?.structuredContent ?? {};
       expect(payload.ID).toBe(1);
       expect(payload._card).toBeUndefined();
     });

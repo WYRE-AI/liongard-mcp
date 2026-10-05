@@ -76,7 +76,11 @@ export async function handleDetectionTool(
   name: string,
   args: Record<string, unknown>,
   credentials?: LiongardCredentials
-): Promise<{ content: { type: "text"; text: string }[]; isError?: boolean }> {
+): Promise<{
+  content: { type: "text"; text: string }[];
+  structuredContent?: Record<string, unknown>;
+  isError?: boolean;
+}> {
   const client = await getClient(credentials);
 
   switch (name) {
@@ -126,8 +130,13 @@ export async function handleDetectionTool(
           /* card building never fails the tool result */
         }
         const payload = card ? { ...detection, _card: card } : detection;
+        // SEP-1865: content/structuredContent separation — a short text
+        // summary goes in `content`, the full detection (including _card)
+        // moves to `structuredContent`. No fields are dropped, only relocated.
+        const title = card?.title ?? `detection ${id}`;
         return {
-          content: [{ type: "text", text: JSON.stringify(payload, null, 2) }],
+          content: [{ type: "text", text: `Retrieved detection "${title}".` }],
+          structuredContent: payload as Record<string, unknown>,
         };
       } catch (err) {
         const message = err instanceof Error ? err.message : String(err);

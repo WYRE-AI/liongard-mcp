@@ -60,7 +60,12 @@ EXPOSE 8080
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
   CMD wget --no-verbose --tries=1 --spider http://localhost:8080/health || exit 1
 
-# Set environment variables
+# Set environment variables.
+# MCP_HTTP_HOST=0.0.0.0 is the in-container bind. Startup still refuses to
+# listen unless CONDUIT_S2S_SECRET is a real secret, so this does not expose
+# an unauthenticated /mcp. MCP_ALLOW_INSECURE_DEV cannot widen the listener
+# off loopback. AUTH_MODE stays env for existing single-tenant images;
+# gateway deployments set AUTH_MODE=gateway and pass credentials per request.
 ENV NODE_ENV=production
 ENV LOG_LEVEL=info
 ENV LOG_FORMAT=json

@@ -9,6 +9,12 @@
 
 ### Fixed
 
+- **The HTTP transport no longer exits on a malformed request (WYREAI-741).** The request
+  target was parsed against the client-supplied `Host` header, and a value that does not parse
+  (or a target such as `//`) threw inside the request listener before authentication. The
+  target is now parsed against a fixed base, so `Host` is no longer consulted, and a target
+  that still cannot be parsed gets a `400` JSON response while the server keeps running.
+
 - One-click cloud deploys (Cloudflare Workers, DigitalOcean) no longer fail with
   `npm error 401 Unauthorized` from `npm.pkg.github.com`. The `.npmrc` now carries the
   GitHub Packages auth-token line (`${NODE_AUTH_TOKEN}`) and the Dockerfile writes a
